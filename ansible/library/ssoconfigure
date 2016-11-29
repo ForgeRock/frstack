@@ -391,7 +391,7 @@ def main():
         module.fail_json(msg='Configuration failed, unable to start thread')
 
     headers = {"Content-type": "application/x-www-form-urlencoded",
-               "Content-Length": len(body),
+               "Content-Length": str(len(body)),
                'cache-control': 'no-cache'}
     response = requests.post(openssourl, data=body, headers=headers, stream=True)
     response.close()
