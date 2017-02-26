@@ -20,6 +20,13 @@
     - name: install packages for ansible support
       raw: sudo dnf -y -e0 -d0 install python python-dnf
 
+# This play is needed to update nghttp2 on fedora 23
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: update packages
+      raw: sudo dnf -y -e0 -d0 update nghttp2
+
 # These plays are common to all hosts in the stack. This installs basic packages, java, etc.
 # Put roles here that need to be run on every host in stack
 - hosts: ois
